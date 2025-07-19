@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Training Feedback Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; font-size: 12px; }
+        th { background-color: #f2f2f2; text-align: left; }
+        img { max-width: 100%; margin-bottom: 20px; }
+        h1, h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>📄 Training Feedback Report</h1>
+    <p>📅 Generated on: {{ date }}</p>
+
+    <h2>🗒️ Feedback Data</h2>
+    <table>
+        <thead>
+            <tr>
+                {% for key in data[0].keys() %}
+                <th>{{ key }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>📌 Category-wise Heatmaps</h2>
+    {% for img_path in heatmaps %}
+        <img src="{{ img_path }}">
+    {% endfor %}
+
+    <h2>📊 Feedback Distribution Chart</h2>
+    <img src="{{ bar_chart }}">
+
+</body>
+</html>
