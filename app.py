@@ -26,9 +26,9 @@ if uploaded_file:
         if not isinstance(text, str):
             return "Suggestion"
         score = sid.polarity_scores(text)["compound"]
-        if score >= 0.4:
+        if score >= 0.3:
             return "Compliment"
-        elif score <= -0.3:
+        elif score <= -0.2:
             return "Complaint"
         else:
             return "Suggestion"
